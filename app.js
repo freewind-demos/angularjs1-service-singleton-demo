@@ -1,15 +1,13 @@
 const app = angular.module('app', [])
 
 app.service('hello', function () {
-    this.serviceName = 'hello-service'
+    console.log('------------ hello service ----------------')
+    this.serviceName = 'hello-service-' + Math.random()
     this.hello = function (name) {
-        alert('Hello, ' + name + '! (from ' + this.serviceName + ')')
+        return 'Hello, ' + name + '! (' + this.serviceName + ')'
     }
 })
 
 app.controller('MyController', function ($scope, hello) {
-    $scope.userName = 'AngularJS'
-    $scope.sayHello = function () {
-        hello.hello($scope.userName)
-    }
+    $scope.message = hello.hello('AngularJS')
 })
